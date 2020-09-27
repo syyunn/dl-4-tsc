@@ -31,8 +31,12 @@ from scipy.io import loadmat
 
 def readucr(filename):
     data = np.loadtxt(filename, delimiter=',')
-    Y = data[:, 0]
-    X = data[:, 1:]
+    # Y = data[:, 0]
+    # X = data[:, 1:]
+
+    Y = data[:, -1]
+    X = data[:, :-1]
+
     return X, Y
 
 
@@ -100,6 +104,13 @@ def read_dataset(root_dir, archive_name, dataset_name):
 
         datasets_dict[dataset_name] = (x_train.copy(), y_train.copy(), x_test.copy(),
                                        y_test.copy())
+    elif archive_name == 'GunPoint':
+        file_name = '/tmp/pycharm_project_980/archives/TSC/GunPoint/csv/'
+        x_train, y_train = readucr(file_name + 'train.csv')
+        x_test, y_test = readucr(file_name + 'test.csv')
+        datasets_dict[dataset_name] = (x_train.copy(), y_train.copy(), x_test.copy(),
+                                       y_test.copy())
+
     else:
         file_name = cur_root_dir + '/archives/' + archive_name + '/' + dataset_name + '/' + dataset_name
         x_train, y_train = readucr(file_name + '_TRAIN')
