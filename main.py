@@ -103,7 +103,7 @@ def create_classifier(
 
 # change this directory for your machine
 # root_dir = '/b/home/uha/hfawaz-datas/dl-tsc-temp/'
-root_dir = "/tmp/pycharm_project_980/"
+root_dir = "/tmp/pycharm_project_980"
 
 if sys.argv[1] == "run_all":
     for classifier_name in CLASSIFIERS:
